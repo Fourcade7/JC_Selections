@@ -80,6 +80,10 @@ fun MainScreen() {
     var selectedlistMulti by remember {
         mutableStateOf(mutableListOf<SelectionHelper>())
     }
+
+    var selectedlistMultiPL by remember {
+        mutableStateOf(listOf<SelectionHelperPL>())
+    }
     Column(modifier = Modifier.padding(10.dp)) {
 
         if (selectedDay.isNotEmpty()){
@@ -119,7 +123,7 @@ fun MainScreen() {
         Spacer(modifier = Modifier.height(15.dp))
 
         FlowRow {
-            selectedlistMulti.forEach {item->
+            selectedlistMultiPL.filter { it.isSelected }.forEach {item->
                 Text(text = item.text)
                 Spacer(modifier = Modifier.width(10.dp))
                 Log.d(TAG, "MainScreen f: $item")
@@ -127,12 +131,15 @@ fun MainScreen() {
             }
         }
 
-        Row (horizontalArrangement = Arrangement.SpaceBetween){
-            LazyColumnMultiSelection{
-                selectedlistMulti=it
-                Log.d(TAG, "MainScreen: ${it.joinToString()}")
-            }
+        LazyColumnMultiSelectionPhilipLackner{
+            selectedlistMultiPL=it
         }
+
+//            LazyColumnMultiSelection{
+//                selectedlistMulti=it
+//                Log.d(TAG, "MainScreen: ${it.joinToString()}")
+//            }
+
 
 
 //        LazyColumnSingleSelection{
