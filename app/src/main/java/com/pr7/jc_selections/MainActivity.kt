@@ -121,6 +121,7 @@ fun MainScreen() {
         FlowRow {
             selectedlistMulti.forEach {item->
                 Text(text = item.text)
+                Spacer(modifier = Modifier.width(10.dp))
                 Log.d(TAG, "MainScreen f: $item")
 
             }

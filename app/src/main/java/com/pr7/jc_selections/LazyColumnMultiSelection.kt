@@ -53,9 +53,7 @@ fun LazyColumnMultiSelection(selectedItemL:(MutableList<SelectionHelper>)->Unit)
 
     Column {
 
-        weeklist.filter { it.isSelected }.forEach {
-            Text(text = it.text)
-        }
+
         LazyColumn {
 
             items(weeklist) {
