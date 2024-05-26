@@ -58,9 +58,13 @@ fun CheckBoxSelection(selectedListL:(MutableList<String>)->Unit) {
                         }
                         //selectedListL.invoke(mutableListOf<String>().apply{addAll(selectedList)})
 
-                        val selectedListNew= mutableListOf<String>()
-                        selectedListNew.addAll(selectedList)
-                        selectedListL.invoke(selectedListNew)
+//                        val selectedListNew= mutableListOf<String>()
+//                        selectedListNew.addAll(selectedList)
+//                        selectedListL.invoke(selectedListNew)
+                        selectedList=selectedList.map {
+                            it
+                        }.toMutableList()
+                        selectedListL.invoke(selectedList)
 
                     }
                 )
